@@ -1,0 +1,273 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Git Задания и Команды (Уточнённый Bash)</title>
+    <style>
+        body {
+            font-family: "Segoe UI", sans-serif;
+            margin: 40px;
+            background-color: #f5f7fa;
+            color: #212121;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #1a237e;
+        }
+        table.git-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 14px;
+            background: #fff;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+        }
+        .git-table th, .git-table td {
+            border: 1px solid #ccc;
+            padding: 10px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .git-table th {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+        .git-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        i {
+            color: #37474f;
+        }
+        code.bash {
+            display: block;
+            background-color: #002200;
+            color: #ccffcc;
+            padding: 8px 10px;
+            border-radius: 4px;
+            font-family: "Courier", monospace;
+            font-size: 13px;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Git: Задания и Уточнённые Команды (с параметрами)</h1>
+    <table border="1" class="dataframe git-table">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Задание</th>
+      <th>Команды из задания</th>
+      <th>Реальные команды</th>
+      <th>Пояснение</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1.1 Форкнуть репозиторий</td>
+      <td><i>fork</i></td>
+      <td><code class='bash'>форк через GitHub</code></td>
+      <td>Создать копию чужого репозитория в своём аккаунте GitHub</td>
+    </tr>
+    <tr>
+      <td>1.2 Клонировать форк</td>
+      <td><i>git clone</i></td>
+      <td><code class='bash'>git clone https://github.com/ваш_юзер/cohort60_test1.git</code></td>
+      <td>Скачать форк-репозиторий на локальный компьютер</td>
+    </tr>
+    <tr>
+      <td>1.3 Добавить upstream</td>
+      <td><i>git remote add upstream</i></td>
+      <td><code class='bash'>git remote add upstream https://github.com/original/cohort60_test1.git</code></td>
+      <td>Привязать оригинальный репозиторий как upstream</td>
+    </tr>
+    <tr>
+      <td>1.4 Проверить статус</td>
+      <td><i>git status</i></td>
+      <td><code class='bash'>git status</code></td>
+      <td>Показать текущий статус — изменения, ветка и т.п.</td>
+    </tr>
+    <tr>
+      <td>1.5 Проверить удалённые</td>
+      <td><i>git remote -v</i></td>
+      <td><code class='bash'>git remote -v</code></td>
+      <td>Показать список подключённых репозиториев</td>
+    </tr>
+    <tr>
+      <td>1.6 Создать .gitignore</td>
+      <td><i>создать файл</i></td>
+      <td><code class='bash'>echo node_modules/ > .gitignore</code></td>
+      <td>Создать файл с базовыми исключениями</td>
+    </tr>
+    <tr>
+      <td>1.7 Закоммитить .gitignore</td>
+      <td><i>git add .gitignore</i></td>
+      <td><code class='bash'>git add .gitignore && git commit -m 'Добавлен .gitignore'</code></td>
+      <td>Добавить и сохранить файл в истории</td>
+    </tr>
+    <tr>
+      <td>2.1 Создать ветку</td>
+      <td><i>git checkout -b feature/update-readme</i></td>
+      <td><code class='bash'>git checkout -b feature/update-readme</code></td>
+      <td>Создать новую ветку и переключиться на неё</td>
+    </tr>
+    <tr>
+      <td>2.2 Изменить README.md</td>
+      <td><i>внести строку</i></td>
+      <td><code class='bash'>открыть README.md в редакторе, внести изменения</code></td>
+      <td>Редактирование README.md через VS Code или GUI</td>
+    </tr>
+    <tr>
+      <td>2.3 Сделать коммит</td>
+      <td><i>git add README.md</i></td>
+      <td><code class='bash'>git add README.md && git commit -m 'Добавлена строка в README'</code></td>
+      <td>Добавить и зафиксировать изменения</td>
+    </tr>
+    <tr>
+      <td>2.4 Проверить статус</td>
+      <td><i>git status</i></td>
+      <td><code class='bash'>git status</code></td>
+      <td>Убедиться, что всё сохранено</td>
+    </tr>
+    <tr>
+      <td>2.5 Отправить ветку</td>
+      <td><i>git push -u origin feature/update-readme</i></td>
+      <td><code class='bash'>git push -u origin feature/update-readme</code></td>
+      <td>Отправить ветку в свой репозиторий на GitHub</td>
+    </tr>
+    <tr>
+      <td>2.6 Перейти в main</td>
+      <td><i>git checkout main</i></td>
+      <td><code class='bash'>git checkout main</code></td>
+      <td>Вернуться в ветку main</td>
+    </tr>
+    <tr>
+      <td>2.7 Три файла и три коммита</td>
+      <td><i>создать и коммитить по одному</i></td>
+      <td><code class='bash'>touch file1.txt && git add file1.txt && git commit -m 'file1' (повторить 3 раза)</code></td>
+      <td>Создать 3 файла и для каждого — отдельный коммит</td>
+    </tr>
+    <tr>
+      <td>2.8 Просмотр истории</td>
+      <td><i>git log --oneline --graph --all</i></td>
+      <td><code class='bash'>git log --oneline --graph --all</code></td>
+      <td>Визуализированная история всех веток</td>
+    </tr>
+    <tr>
+      <td>2.9 Объединить коммиты</td>
+      <td><i>git rebase -i HEAD~2</i></td>
+      <td><code class='bash'>git rebase -i HEAD~2</code></td>
+      <td>Интерактивный rebase для объединения последних коммитов</td>
+    </tr>
+    <tr>
+      <td>3.1 Просмотр коммита</td>
+      <td><i>git show <commit></i></td>
+      <td><code class='bash'>git log --oneline<br># скопируйте хеш нужного коммита<br>git show <commit_hash></code></td>
+      <td>Показать подробности коммита</td>
+    </tr>
+    <tr>
+      <td>3.2 Откат soft</td>
+      <td><i>git reset --soft HEAD~1</i></td>
+      <td><code class='bash'>git reset --soft HEAD~1</code></td>
+      <td>Откат коммита, оставить изменения в индексе</td>
+    </tr>
+    <tr>
+      <td>3.3 Откат mixed</td>
+      <td><i>git reset --mixed HEAD~1</i></td>
+      <td><code class='bash'>git reset --mixed HEAD~1</code></td>
+      <td>Убрать изменения из индекса, но оставить в файлах</td>
+    </tr>
+    <tr>
+      <td>3.4 Откат hard</td>
+      <td><i>git reset --hard HEAD~1</i></td>
+      <td><code class='bash'>git reset --hard HEAD~1</code></td>
+      <td>Полностью удалить изменения и коммит</td>
+    </tr>
+    <tr>
+      <td>3.5 Revert</td>
+      <td><i>git revert <commit></i></td>
+      <td><code class='bash'>git log --oneline<br># скопируйте хеш нужного коммита<br>git revert <commit_hash></code></td>
+      <td>Создать коммит, отменяющий предыдущий</td>
+    </tr>
+    <tr>
+      <td>3.6 stash</td>
+      <td><i>git stash</i></td>
+      <td><code class='bash'>git stash && git checkout main && git stash pop</code></td>
+      <td>Спрятать изменения, переключиться и вернуть их обратно</td>
+    </tr>
+    <tr>
+      <td>4.1 Создать ветку конфликта</td>
+      <td><i>git checkout -b feature/conflict-test</i></td>
+      <td><code class='bash'>git checkout -b feature/conflict-test</code></td>
+      <td>Создание ветки для конфликта</td>
+    </tr>
+    <tr>
+      <td>4.2 Изменить README.md</td>
+      <td><i>внести строку</i></td>
+      <td><code class='bash'>открыть README.md в редакторе, изменить</code></td>
+      <td>Изменение строки в README.md через редактор</td>
+    </tr>
+    <tr>
+      <td>4.3 Сделать коммит</td>
+      <td><i>git add + commit</i></td>
+      <td><code class='bash'>git add README.md && git commit -m 'Изменено для конфликта'</code></td>
+      <td>Сохранить изменения для конфликта</td>
+    </tr>
+    <tr>
+      <td>4.4 Изменить ту же строку в main</td>
+      <td><i>изменить и закоммитить</i></td>
+      <td><code class='bash'>открыть README.md, изменить, git add + commit</code></td>
+      <td>Вызвать конфликт вручную</td>
+    </tr>
+    <tr>
+      <td>4.5 Сделать merge</td>
+      <td><i>git merge feature/conflict-test</i></td>
+      <td><code class='bash'>git merge feature/conflict-test</code></td>
+      <td>Слияние конфликтной ветки</td>
+    </tr>
+    <tr>
+      <td>4.6 Разрешить конфликт</td>
+      <td><i>вручную</i></td>
+      <td><code class='bash'>отредактировать, git add, git commit</code></td>
+      <td>Решить конфликт вручную и завершить слияние</td>
+    </tr>
+    <tr>
+      <td>5.1 Обновить main</td>
+      <td><i>git pull upstream main</i></td>
+      <td><code class='bash'>git pull upstream main</code></td>
+      <td>Загрузить изменения из оригинального репозитория</td>
+    </tr>
+    <tr>
+      <td>5.2 Ветка rebase-test</td>
+      <td><i>git checkout -b feature/rebase-test</i></td>
+      <td><code class='bash'>git checkout -b feature/rebase-test</code></td>
+      <td>Создание новой ветки для проверки</td>
+    </tr>
+    <tr>
+      <td>5.3 Снова обновить main</td>
+      <td><i>git checkout main && git pull upstream main</i></td>
+      <td><code class='bash'>git checkout main && git pull upstream main</code></td>
+      <td>Актуализировать основную ветку</td>
+    </tr>
+    <tr>
+      <td>5.4 Rebase</td>
+      <td><i>git rebase main</i></td>
+      <td><code class='bash'>git checkout feature/rebase-test && git rebase main</code></td>
+      <td>Наложить изменения на обновлённый main</td>
+    </tr>
+    <tr>
+      <td>5.5 Push после rebase</td>
+      <td><i>git push -u origin feature/rebase-test</i></td>
+      <td><code class='bash'>git push --force</code></td>
+      <td>Отправить изменённую историю в GitHub</td>
+    </tr>
+    <tr>
+      <td>6.1 Создать PR</td>
+      <td><i>Compare & pull request</i></td>
+      <td><code class='bash'>через GitHub интерфейс</code></td>
+      <td>Оформить pull request в оригинальный репозиторий</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
