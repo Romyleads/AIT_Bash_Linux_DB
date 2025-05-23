@@ -82,7 +82,7 @@ Kali Linux Apple Silicon ["https://www.kali.org/get-kali/#kali-installer-images"
 - cat /etc/os-release > ~/storage/system/system_info.txt - (Сохраняет содержимое файла /etc/os-release, содержащего данные о системе, в файл system_info.txt)
 - ps aux --sort=-%cpu | head -n 4 > ~/storage/system/process/top_processes.txt - (Записывает информацию о трех самых затратных процессах по CPU в файл top_processes.txt)
 
-### Список Линоксов от МИхаила
+### Список Линуксовых версий и их индексов от МИхаила
 
 https://bellard.org/jslinux/
 
