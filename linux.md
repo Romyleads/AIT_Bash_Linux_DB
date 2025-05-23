@@ -81,3 +81,15 @@ Kali Linux Apple Silicon ["https://www.kali.org/get-kali/#kali-installer-images"
 - df -h > ~/storage/disk_info.txt - (Записывает информацию о свободном месте на диске в файл disk_info.txt в каталоге storage)
 - cat /etc/os-release > ~/storage/system/system_info.txt - (Сохраняет содержимое файла /etc/os-release, содержащего данные о системе, в файл system_info.txt)
 - ps aux --sort=-%cpu | head -n 4 > ~/storage/system/process/top_processes.txt - (Записывает информацию о трех самых затратных процессах по CPU в файл top_processes.txt)
+
+### Список Линоксов от МИхаила
+
+https://bellard.org/jslinux/
+
+### Задание на уроке по которому работали
+
+1. В папке team60 в корневой директории создайте файл с информацией о юзере и названии версии linux (имя возьмите из команд) {"user": …, "system": …}
+2. Создайте несколько вложенных каталогов в одну команду - в домашней директории storage/system/process
+3. В папке storage создайте текстовый файл с информацией о свободном месте на диске
+4. В папке system с информацией о системе.
+5. В папке process файл с информацией о трех самых затратных процессах в системе.
