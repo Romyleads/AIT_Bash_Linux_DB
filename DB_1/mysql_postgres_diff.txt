@@ -1,0 +1,9 @@
++----------------------------------------------------------+---------------------------------------------------------+
+| PostgreSQL                                               | MySQL                                                   |
++----------------------------------------------------------+---------------------------------------------------------+
+| CREATE USER maria WITH PASSWORD 'secure123';             | CREATE USER 'maria'@'localhost' IDENTIFIED BY 'secure123'; |
+| CREATE DATABASE college_db OWNER maria;                  | CREATE DATABASE college_db;                             |
+| -- (подключение через psql: указывается при запуске)     | USE college_db;                                         |
+| id SERIAL PRIMARY KEY                                    | id INT AUTO_INCREMENT PRIMARY KEY                       |
+| TRUNCATE TABLE students RESTART IDENTITY;                | TRUNCATE TABLE students;                                |
++----------------------------------------------------------+---------------------------------------------------------+
