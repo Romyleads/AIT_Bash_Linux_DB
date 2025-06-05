@@ -1,0 +1,124 @@
+// Для того чтобы исключить работу с базой test, в этом задании я буду использовать вместо общего use(<database>) - db.getSiblingDB('shop') в каждом запросе, чтобы жестко указать базу 'shop' и гарантировать правильное выполнение каждого запрос из-под playground.
+
+// 1. Используем базу shop
+// db = db.getSiblingDB('shop')
+
+// 2. Создать коллекцию products
+// db.getSiblingDB('shop').createCollection('products')
+
+// 3. Добавить один товар
+// db.getSiblingDB('shop').products.insertOne({ name: 'iPhone', price: 500, category: 'Electronics' })
+
+// 4. Добавить несколько товаров
+// db.getSiblingDB('shop').products.insertMany([
+//   { name: 'Laptop', price: 1200, category: 'Electronics' },
+//   { name: 'Tablet', price: 300, category: 'Electronics' }
+// ])
+
+// 5. Вывод всех товаров
+// db.getSiblingDB('shop').products.find()
+
+// 6. Найти товар по названию
+// db.getSiblingDB('shop').products.findOne({ name: 'iPhone' })
+
+// 7. Фильтрация товаров по цене - вывести товары с ценой > 600
+// db.getSiblingDB('shop').products.find({ price: { $gt: 600 } })
+
+// 8. Обновить цену Laptop
+// db.getSiblingDB('shop').products.updateOne(
+//   { name: 'Laptop' },
+//   { $set: { price: 1300 } }
+// )
+
+// 9. Удалить товар Tablet
+// db.getSiblingDB('shop').products.deleteOne({ name: 'Tablet' })
+
+// 10. Удалить товары с ценой < 600
+// db.getSiblingDB('shop').products.deleteMany({ price: { $lt: 600 } })
+
+// 11. Создать индекс для name
+// db.getSiblingDB('shop').products.createIndex({ name: 1 })
+
+// 12. Подсчитать количество товаров
+// db.getSiblingDB('shop').products.countDocuments()
+
+// 13. Найти товары с ценой от 600 до 1000
+// db.getSiblingDB('shop').products.find({ price: { $gte: 600, $lte: 1000 } })
+
+// 14. Найти все товары категории Electronics
+// db.getSiblingDB('shop').products.find({ category: 'Electronics' })
+
+// 15. Добавить поле stock ко всем товарам
+// db.getSiblingDB('shop').products.updateMany({}, { $set: { stock: 50 } })
+
+// 16. Добавить товар с вложенным документом details
+// db.getSiblingDB('shop').products.insertOne({
+//   name: 'Smartwatch',
+//   price: 200,
+//   details: { brand: 'Fitbit', model: 'Versa' }
+// })
+
+// 17. Найти товары, содержащие details
+// db.getSiblingDB('shop').products.find({ details: { $exists: true } })
+
+// 18. Увеличить цену всех товаров на 10%
+// db.getSiblingDB('shop').products.updateMany({}, { $mul: { price: 1.1 } })
+
+// 19. Добавить поле reviews с первым отзывом
+// db.getSiblingDB('shop').products.updateOne(
+//   { name: 'Laptop' },
+//   { $set: { reviews: [{ rating: 5, comment: 'Excellent!' }] } }
+// )
+
+// 20. Добавить отзыв к Laptop
+// db.getSiblingDB('shop').products.updateOne(
+//   { name: 'Laptop' },
+//   { $push: { reviews: { rating: 4, comment: 'Good' } } }
+// )
+
+// 21. Найти товары с отзывом рейтингом 5
+// db.getSiblingDB('shop').products.find({ reviews: { $elemMatch: { rating: 5 } } })
+
+// 22. Удалить все отзывы у Laptop
+// db.getSiblingDB('shop').products.updateOne(
+//   { name: 'Laptop' },
+//   { $unset: { reviews: '' } }
+// )
+
+// 23. Создать коллекцию orders и добавить заказ
+// db.getSiblingDB('shop').orders.insertOne({ product: 'Laptop', status: 'Pending' })
+
+// 24. Обновить статус заказа
+// db.getSiblingDB('shop').orders.updateOne(
+//   { status: 'Pending' },
+//   { $set: { status: 'Shipped' } }
+// )
+
+// 25. Подсчитать заказы со статусом Shipped
+// db.getSiblingDB('shop').orders.countDocuments({ status: 'Shipped' })
+
+// 26. Удалить заказы с товаром Phone
+// db.getSiblingDB('shop').orders.deleteMany({ product: 'Phone' })
+
+// 27. Создать пользователя и добавить user_id в заказы
+// const userId = ObjectId()
+// db.getSiblingDB('shop').users.insertOne({ _id: userId, name: 'John Doe' })
+// db.getSiblingDB('shop').orders.updateMany({}, { $set: { user_id: userId } })
+
+// 28. Объединение заказов с пользователями
+// db.getSiblingDB('shop').orders.aggregate([ // Объединение коллекций orders и users
+//   {
+//     $lookup: {
+//       from: 'users', // Коллекция users
+//       localField: 'user_id', // Поле user_id в коллекции orders
+//       foreignField: '_id', // Поле _id в коллекции users
+//       as: 'user_info' // Имя новой коллекции
+//     }
+//   }
+// ])
+
+// 29. Найти товары с ценой > 1000 и отсортировать по убыванию
+// db.getSiblingDB('shop').products.find({ price: { $gt: 1000 } }).sort({ price: -1 })
+
+// 30. Создать уникальный индекс на поле email в customers
+// db.getSiblingDB('shop').customers.createIndex({ email: 1 }, { unique: true })
