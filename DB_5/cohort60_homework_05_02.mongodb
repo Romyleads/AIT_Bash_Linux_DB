@@ -1,0 +1,44 @@
+// В этом задании я решил использовать вместо общего use(<database>) - db.getSiblingDB('shop') в каждом запросе, чтобы явно указать базу 'shop' и гарантировать правильное выполнение.
+
+// 1. Используем базу shop
+// db = db.getSiblingDB('shop')
+
+// 2. Создаем коллекцию cars
+// db.getSiblingDB('shop').createCollection('cars')
+
+// 3. Добавляем 10 машин. Для каждой машины будет бренд, модель, цена и год:
+
+// db.getSiblingDB('shop').cars.insertMany([
+//   { brand: 'BMW', price: 20000, model: 'X5', year: 2015 },
+//   { brand: 'BMW', price: 22000, model: 'X3', year: 2017 },
+//   { brand: 'Audi', price: 25000, model: 'A4', year: 2015 },
+//   { brand: 'Audi', price: 27000, model: 'Q5', year: 2018 },
+//   { brand: 'Mercedes', price: 30000, model: 'C', year: 2017 },
+//   { brand: 'Mercedes', price: 35000, model: 'E', year: 2019 },
+//   { brand: 'Toyota', price: 15000, model: 'Corolla', year: 2015 },
+//   { brand: 'Toyota', price: 18000, model: 'Camry', year: 2017 },
+//   { brand: 'Ford', price: 17000, model: 'Focus', year: 2017 },
+//   { brand: 'Ford', price: 16000, model: 'Focus', year: 2015 }
+// ])
+
+// 4. Выводим среднюю цену по брендам
+// db.getSiblingDB('shop').cars.aggregate([
+//   { $group: { _id: "$brand", averagePrice: { $avg: "$price" } } }
+// ])
+
+// 5. Выводим среднюю цену по годам
+// db.getSiblingDB('shop').cars.aggregate([
+//   { $group: { _id: "$year", averagePrice: { $avg: "$price" } } }
+// ])
+
+// 6. Выводим 3 самые дешёвые машины
+// db.getSiblingDB('shop').cars.find().sort({ price: 1 }).limit(3)
+
+// 7. Выводим 3 самые дорогие машины определённого бренда (например, BMW)
+// db.getSiblingDB('shop').cars.find({ brand: 'BMW' }).sort({ price: -1 }).limit(3)
+
+// 8. Выводим случайный автомобиль марки BMW
+// db.getSiblingDB('shop').cars.aggregate([
+//   { $match: { brand: 'BMW' } },
+//   { $sample: { size: 1 } }
+// ])
