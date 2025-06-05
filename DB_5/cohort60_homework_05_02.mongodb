@@ -19,6 +19,8 @@
 //   { brand: 'Toyota', price: 18000, model: 'Camry', year: 2017 },
 //   { brand: 'Ford', price: 17000, model: 'Focus', year: 2017 },
 //   { brand: 'Ford', price: 16000, model: 'Focus', year: 2015 }
+//   { brand: 'Honda', price: 17000, model: 'Civic', year: 2015 },
+//   { brand: 'Honda', price: 20000, model: 'Accord', year: 2017 }
 // ])
 
 // 4. Выводим среднюю цену по брендам
