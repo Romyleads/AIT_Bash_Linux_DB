@@ -1,7 +1,7 @@
 // В этом задании я решил использовать вместо общего use(<database>) - db.getSiblingDB('shop') в каждом запросе, чтобы явно указать базу 'shop' и гарантировать правильное выполнение.
 
 // 1. Используем базу shop
-// db = db.getSiblingDB('shop')
+// db.getSiblingDB('shop')
 
 // 2. Создаем коллекцию cars
 // db.getSiblingDB('shop').createCollection('cars')
